@@ -1,29 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TD 01</title>
-  <link href='/style.css' rel='stylesheet'>
-  <script  type="module/text/javascript" src="/stack.js"></script>
-  <script  type="module/text/javascript" src="/main.js"></script>
-</head>
-<body>
-  <h1>TD 01</h1>
-  <form target="_self" onsubmit="(e)=>{e.preventDefault();gerar(e);return false;}" id="form" class="formStyle">
-    <label for="N" id="NLabel">N:</label>
-    <input id="N" name="N" type="text" placeholder="Conjunto N..." />
-    <label for="T" id="TLabel">T:</label>
-    <input id="T" name="T" type="text" placeholder="Conjunto T..." />
-    <label for="P" id="PLabel">P:</label>
-    <input id="P" name="P" type="text" placeholder="Conjunto P..." />
-    <label for="S" id="SLabel">S:</label>
-    <input id="S" name="S" type="text" placeholder="Conjunto S..." />
-    <button type="submit">GERAR</button>
-  </form>
-  <textarea id="result" class="resultStyle" readonly rows="10" cols="50">
-  </textarea>
-
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TD 01</title>
+    <script defer src="main.js"></script>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>TD 01</h1>
+    <form onsubmit="event.preventDefault(); gerar(event);">
+      <div class="formStyle">
+        <label for="N" id="NLabel">N:</label>
+        <input id="N" name="N" type="text" placeholder="Conjunto N..." />
+        <label for="T" id="TLabel">T:</label>
+        <input id="T" name="T" type="text" placeholder="Conjunto T..." />
+        <label for="P" id="PLabel">P:</label>
+        <input id="P" name="P" type="text" placeholder="Conjunto P..." />
+        <label for="S" id="SLabel">S:</label>
+        <input id="S" name="S" type="text" placeholder="Conjunto S..." />
+        <button type="submit">GERAR</button>
+      </div>
+    </form>
+    <textarea id="result" class="resultStyle" readonly rows="10" cols="50">
+    </textarea>
+  </body>
 </html>
