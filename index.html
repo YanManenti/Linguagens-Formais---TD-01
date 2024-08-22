@@ -9,6 +9,13 @@
   </head>
   <body>
     <h1>TD 01</h1>
+    <div class="selectStyle">
+      <select id="exemploSelect">
+        <option value="1" onclick="carregarExemplo();">Exemplo 1</option>
+        <option value="2" onclick="carregarExemplo();">Exemplo 2</option>
+        <option value="3" onclick="carregarExemplo();">Exemplo 3</option>
+      </select>
+    </div>
     <form onsubmit="event.preventDefault(); gerar(event);">
       <div class="formStyle">
         <label for="N" id="NLabel">N:</label>

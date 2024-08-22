@@ -52,7 +52,7 @@ function printToTextBox(content) {
 }
 
 function sanitizeInput(input) {
-  if (input === undefined || input === null) {
+  if (input === undefined || input === null || input === "") {
     return [];
   }
   const sanitized = input.split("|").map((item) => item.trim());
@@ -117,4 +117,39 @@ class Pilha {
     result.reverse();
     return result.join("");
   }
+}
+
+function carregarExemplo() {
+  const selected = document.querySelector("#exemploSelect").value;
+  const inputN = document.querySelector("#N");
+  const inputT = document.querySelector("#T");
+  const inputP = document.querySelector("#P");
+  const inputS = document.querySelector("#S");
+
+  const exemplos = {
+    1: {
+      N: "aT",
+      T: "bP",
+      P: "cS",
+      S: "d",
+    },
+    2: {
+      N: "aT | b",
+      T: "bP | N",
+      P: "cS | bS",
+      S: "d | S",
+    },
+    3: {
+      N: "",
+      T: "",
+      P: "",
+      S: "aSb | ab",
+    },
+  };
+
+  const exemplo = exemplos[selected];
+  inputN.value = exemplo.N;
+  inputT.value = exemplo.T;
+  inputP.value = exemplo.P;
+  inputS.value = exemplo.S;
 }
