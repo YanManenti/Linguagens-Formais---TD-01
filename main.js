@@ -27,6 +27,9 @@ function gerarLinguagem(conjuntos) {
   pilha.adicionar(pickRandom(conjuntos[conjuntoAdicionar]));
   while (!pilha.estaVazia()) {
     const topo = pilha.remover();
+    if (topo === "ɛ") {
+      break;
+    }
     if (conjuntos[topo] === undefined) {
       saida.push(topo);
       continue;
@@ -34,7 +37,7 @@ function gerarLinguagem(conjuntos) {
     pilha.adicionar(pickRandom(conjuntos[topo]));
   }
 
-  printToTextBox(saida.join(", "));
+  printToTextBox(saida.join(""));
 }
 
 function pickConjunto(conjuntos) {
@@ -129,7 +132,7 @@ function carregarExemplo() {
   const exemplos = {
     1: {
       N: "aT",
-      T: "bP",
+      T: "bP | ɛ",
       P: "cS",
       S: "d",
     },

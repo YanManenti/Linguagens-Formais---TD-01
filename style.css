@@ -11,13 +11,20 @@ body{
     gap: 30px;
 }
 
+h1{
+    margin: 0;
+}
+
 .formStyle{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
+}
 
+.formStyle input{
+    margin-bottom: 5px;
 }
 
 .resultStyle{
@@ -36,4 +43,15 @@ body{
     justify-content: flex-start;
     gap: 10px;
 
+}
+
+.subtitleStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.subtitleStyle p{
+    margin: 5px;
 }
