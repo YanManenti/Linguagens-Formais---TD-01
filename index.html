@@ -10,6 +10,9 @@
   <body>
     <h1>TD 01</h1>
     <div class="subtitleStyle">
+      <p>
+        Se o caractere não estiver na esquerda ele será considerado terminal.
+      </p>
       <p>O conjunto de início é escolhido aleatoriamente.</p>
       <p>Para saídas vazias use: ɛ</p>
     </div>
@@ -21,17 +24,15 @@
       </select>
     </div>
     <form onsubmit="event.preventDefault(); gerar(event);">
-      <div class="formStyle">
-        <label for="N" id="NLabel">N:</label>
-        <input id="N" name="N" type="text" placeholder="Conjunto N..." />
-        <label for="T" id="TLabel">T:</label>
-        <input id="T" name="T" type="text" placeholder="Conjunto T..." />
-        <label for="P" id="PLabel">P:</label>
-        <input id="P" name="P" type="text" placeholder="Conjunto P..." />
-        <label for="S" id="SLabel">S:</label>
-        <input id="S" name="S" type="text" placeholder="Conjunto S..." />
-        <button type="submit">GERAR</button>
-      </div>
+      <div class="formStyle" id="formulario"></div>
+      <button
+        class="customButton blue"
+        type="button"
+        onclick="adicionarInput()"
+      >
+        ADICIONAR
+      </button>
+      <button class="customButton green" type="submit">GERAR</button>
     </form>
     <textarea id="result" class="resultStyle" readonly rows="10" cols="50">
     </textarea>

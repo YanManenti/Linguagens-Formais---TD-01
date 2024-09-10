@@ -1,19 +1,58 @@
 function gerar(e) {
-  N = sanitizeInput(e.target["N"].value);
-  T = sanitizeInput(e.target["T"].value);
-  P = sanitizeInput(e.target["P"].value);
-  S = sanitizeInput(e.target["S"].value);
-
-  const conjuntos = {
-    N: N,
-    T: T,
-    P: P,
-    S: S,
-  };
-
+  const conjuntos = {};
+  const nodeArray = document.querySelectorAll(".nomeInput");
+  const idArray = Array.from(nodeArray).map((node) => node.id);
+  idArray.forEach((id) => {
+    const nome = document.getElementById(id).value;
+    const conjuntoId = id.replace("nameInput", "conjuntoInput");
+    const conjuntoValue = document.getElementById(conjuntoId).value;
+    conjuntos[nome] = sanitizeInput(conjuntoValue);
+  });
   gerarLinguagem(conjuntos);
 
   return false;
+}
+
+function adicionarInput() {
+  let newId = 0;
+  const lastInput = getLastInput();
+  const container = document.getElementById("formulario");
+  const wrapper = document.createElement("div");
+  wrapper.className = "inputWrapper";
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "Nome...";
+  nameInput.className = "nomeInput";
+  if (lastInput !== null) {
+    newId = parseInt(lastInput.id.replace("nameInput", "")) + 1;
+  }
+  nameInput.id = "nameInput" + newId;
+  const conjuntoInput = document.createElement("input");
+  conjuntoInput.type = "text";
+  conjuntoInput.placeholder = "Conjunto...";
+  conjuntoInput.className = "conjuntoInput";
+  conjuntoInput.id = "conjuntoInput" + newId;
+
+  const removeButton = document.createElement("button");
+  removeButton.type = "button";
+  removeButton.innerHTML = "X";
+  removeButton.onclick = () => {
+    wrapper.remove();
+  };
+  removeButton.className = "remover";
+
+  wrapper.appendChild(nameInput);
+  wrapper.appendChild(conjuntoInput);
+  wrapper.appendChild(removeButton);
+  container.appendChild(wrapper);
+}
+
+function getLastInput() {
+  const inputs = document.querySelectorAll(".nomeInput");
+  if (inputs.length === 0) {
+    return null;
+  }
+  return inputs[inputs.length - 1];
 }
 
 function gerarLinguagem(conjuntos) {
@@ -36,7 +75,6 @@ function gerarLinguagem(conjuntos) {
     }
     pilha.adicionar(pickRandom(conjuntos[topo]));
   }
-
   printToTextBox(saida.join(""));
 }
 
@@ -82,14 +120,13 @@ class Pilha {
       alert("Item não pode ser um array");
       return;
     }
-    let amount = 1;
     const beforeCount = this.items.length;
-    while (item.length > 0) {
-      const length = item.length - amount;
-      this.items.push(item[length]);
-      item = item.slice(0, length);
-    }
-
+    item
+      .split("")
+      .reverse()
+      .forEach((char) => {
+        this.items.push(char);
+      });
     return this.items.length - beforeCount;
   }
 
@@ -117,17 +154,28 @@ class Pilha {
     result = this.items.map((item, index) =>
       index === this.items.length - 1 ? item : ", " + item
     );
-    result.reverse();
     return result.join("");
   }
 }
 
 function carregarExemplo() {
+  const formulario = document.getElementById("formulario");
+  if (formulario.children.length > 0) {
+    formulario.innerHTML = "";
+  }
+  adicionarInput();
+  adicionarInput();
+  adicionarInput();
+  adicionarInput();
   const selected = document.querySelector("#exemploSelect").value;
-  const inputN = document.querySelector("#N");
-  const inputT = document.querySelector("#T");
-  const inputP = document.querySelector("#P");
-  const inputS = document.querySelector("#S");
+  const inputName1 = document.querySelector("#nameInput0");
+  const inputName2 = document.querySelector("#nameInput1");
+  const inputName3 = document.querySelector("#nameInput2");
+  const inputName4 = document.querySelector("#nameInput3");
+  const inputConjunto1 = document.querySelector("#conjuntoInput0");
+  const inputConjunto2 = document.querySelector("#conjuntoInput1");
+  const inputConjunto3 = document.querySelector("#conjuntoInput2");
+  const inputConjunto4 = document.querySelector("#conjuntoInput3");
 
   const exemplos = {
     1: {
@@ -151,8 +199,12 @@ function carregarExemplo() {
   };
 
   const exemplo = exemplos[selected];
-  inputN.value = exemplo.N;
-  inputT.value = exemplo.T;
-  inputP.value = exemplo.P;
-  inputS.value = exemplo.S;
+  inputName1.value = "N";
+  inputName2.value = "T";
+  inputName3.value = "P";
+  inputName4.value = "S";
+  inputConjunto1.value = exemplo.N;
+  inputConjunto2.value = exemplo.T;
+  inputConjunto3.value = exemplo.P;
+  inputConjunto4.value = exemplo.S;
 }
