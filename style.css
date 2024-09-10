@@ -15,6 +15,11 @@ h1{
     margin: 0;
 }
 
+form{
+    width: 45%;
+    
+}
+
 .formStyle{
     display: flex;
     flex-direction: column;
@@ -23,8 +28,47 @@ h1{
     gap: 5px;
 }
 
-.formStyle input{
+.formStyle *{
     margin-bottom: 5px;
+}
+
+.customButton{
+    width: 100%;
+    padding: 5px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.inputWrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.inputWrapper .conjuntoInput{
+    width: 80%;
+}
+
+.inputWrapper .nomeInput{
+    width: 15%;
+}
+
+.inputWrapper .remover{
+    width: 7%;
+    padding: 3px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .resultStyle{
