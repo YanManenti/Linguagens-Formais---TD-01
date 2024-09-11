@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TD 01</title>
-    <script defer src="main.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TD 01</title>
+  <script defer src="main.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <h1>TD 01</h1>
-    <div class="subtitleStyle">
-      <p>
-        Se o caractere não estiver na esquerda ele será considerado terminal.
-      </p>
-      <p>O conjunto de início é escolhido aleatoriamente.</p>
-      <p>Para saídas vazias use: ɛ</p>
+</head>
+
+<body>
+  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Trabalho 1</span>
     </div>
-    <div class="selectStyle">
-      <select id="exemploSelect">
-        <option value="1" onclick="carregarExemplo();">Exemplo 1</option>
-        <option value="2" onclick="carregarExemplo();">Exemplo 2</option>
-        <option value="3" onclick="carregarExemplo();">Exemplo 3</option>
-      </select>
+  </nav>
+
+  <div class="container-xxl">
+    <div>
+      <h1 class="h1">Trabalho 01</h1>
+    
+      <div class="subtitleStyle">
+        <p>
+          Se o caractere não estiver na esquerda ele será considerado terminal.
+        </p>
+        <p>O conjunto de início é escolhido aleatoriamente.</p>
+        <p>Para saídas vazias use: ɛ</p>
+      </div>
+    
+      <div class="selectStyle">
+        <select id="exemploSelect">
+          <option value="1" onclick="carregarExemplo();">Exemplo 1</option>
+          <option value="2" onclick="carregarExemplo();">Exemplo 2</option>
+          <option value="3" onclick="carregarExemplo();">Exemplo 3</option>
+        </select>
+      </div>
+    
+      <form onsubmit="event.preventDefault(); gerar(event);">
+        <div class="formStyle" id="formulario"></div>
+        <button class="customButton bg-primary" type="button" onclick="adicionarInput()">
+          ADICIONAR
+        </button>
+        <button class="customButton bg-success" type="submit">GERAR</button>
+      </form>
+    
+      <textarea id="result" class="resultStyle" readonly rows="10" cols="50">
+        </textarea> 
     </div>
-    <form onsubmit="event.preventDefault(); gerar(event);">
-      <div class="formStyle" id="formulario"></div>
-      <button
-        class="customButton blue"
-        type="button"
-        onclick="adicionarInput()"
-      >
-        ADICIONAR
-      </button>
-      <button class="customButton green" type="submit">GERAR</button>
-    </form>
-    <textarea id="result" class="resultStyle" readonly rows="10" cols="50">
-    </textarea>
-  </body>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+
 </html>
