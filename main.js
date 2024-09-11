@@ -1,13 +1,19 @@
 function gerar(e) {
   const conjuntos = {};
   const nodeArray = document.querySelectorAll(".nomeInput");
+  //Pega todos os ids dos inputs de nome.
   const idArray = Array.from(nodeArray).map((node) => node.id);
   idArray.forEach((id) => {
+    //Pega o valor do input de nome.
     const nome = document.getElementById(id).value;
     const conjuntoId = id.replace("nameInput", "conjuntoInput");
+    //Pega o valor do input de conjunto.
     const conjuntoValue = document.getElementById(conjuntoId).value;
+    //Adiciona o nome e o conjunto ao objeto conjuntos.
     conjuntos[nome] = sanitizeInput(conjuntoValue);
   });
+
+  //Gera a linguagem.
   gerarLinguagem(conjuntos);
 
   return false;
@@ -63,7 +69,15 @@ function gerarLinguagem(conjuntos) {
     printToTextBox("Todos os conjuntos estão vazios");
     return false;
   }
+  //Adiciona o conjunto inicial na pilha.
   pilha.adicionar(pickRandom(conjuntos[conjuntoAdicionar]));
+
+  //Enquanto a pilha não estiver vazia, remove o topo.
+  //Se for ɛ, sai do loop.
+  //Se for um terminal(não está no objeto conjuntos), adiciona à saida e continua.
+  //Se for um não-terminal, adiciona um item aleatório do conjunto que corresponde ao não-terminal.
+  //Repete até o conjunto estar vazio, então sai do loop.
+  //Junta o array de saida em uma string e imprime no textbox.
   while (!pilha.estaVazia()) {
     const topo = pilha.remover();
     if (topo === "ɛ") {
@@ -79,6 +93,7 @@ function gerarLinguagem(conjuntos) {
 }
 
 function pickConjunto(conjuntos) {
+  //Pega o primeiro conjunto que não está vazio ou retorna null.
   for (const conjunto in conjuntos) {
     if (conjuntos[conjunto].length > 0) {
       return conjunto;
@@ -96,11 +111,13 @@ function sanitizeInput(input) {
   if (input === undefined || input === null || input === "") {
     return [];
   }
+  //Remove espaços em branco e separa os itens por "|".
   const sanitized = input.split("|").map((item) => item.trim());
   return sanitized;
 }
 
 function pickRandom(array) {
+  //Retorna um item aleatório do array usando seu tamanho.
   return array[Math.floor(Math.random() * array.length)];
 }
 
@@ -111,6 +128,8 @@ class Pilha {
     this.items = [];
   }
 
+  //Única diferença é que os items são adicionados em ordem reversa(chamada .reverse())
+  //para o item mais a esquerda ficar no topo.
   adicionar(item) {
     if (item === undefined || item === null) {
       alert("Item não pode ser nulo ou indefinido");
