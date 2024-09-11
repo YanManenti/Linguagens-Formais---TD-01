@@ -1,17 +1,13 @@
 
 body{
+    background-image: linear-gradient(to right, #cfd9df 0%, #e2ebf0 100%);
     margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 30px;
 }
 
 h1{
+    font-weight: bold;
     margin: 0;
 }
 
@@ -23,21 +19,60 @@ h1{
     gap: 5px;
 }
 
-.formStyle input{
+.formStyle *{
     margin-bottom: 5px;
 }
 
-.resultStyle{
+.customButton{
+    width: 100%;
+    padding: 5px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.customButton:hover{
+    opacity: 0.7;
+}
+
+.inputWrapper{
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
     gap: 10px;
+}
+
+.inputWrapper .conjuntoInput{
+    width: 80%;
+}
+
+.inputWrapper .nomeInput{
+    width: 15%;
+}
+
+.inputWrapper .remover{
+    width: 7%;
+    padding: 3px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.resultStyle{
+    cursor: default;
     resize: vertical;
 }
 
 .selectStyle{
     width: 100%;
+    margin: 10px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -53,5 +88,15 @@ h1{
 }
 
 .subtitleStyle p{
+    font-weight: bold;
+    font-size: 0.18in;
     margin: 5px;
+}
+
+.container-xxl{
+    margin-top: 50px;
+    justify-content: space-around;
+    text-align: center;
+    display: inline-flex;
+    max-width: none;
 }
