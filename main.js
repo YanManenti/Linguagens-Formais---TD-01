@@ -159,15 +159,19 @@ class Pilha {
 }
 
 function carregarExemplo() {
+  const selected = document.querySelector("#exemploSelect").value;
+
   const formulario = document.getElementById("formulario");
   if (formulario.children.length > 0) {
     formulario.innerHTML = "";
+    if (selected === "0") {
+      return;
+    }
   }
   adicionarInput();
   adicionarInput();
   adicionarInput();
   adicionarInput();
-  const selected = document.querySelector("#exemploSelect").value;
   const inputName1 = document.querySelector("#nameInput0");
   const inputName2 = document.querySelector("#nameInput1");
   const inputName3 = document.querySelector("#nameInput2");
